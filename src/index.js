@@ -37,8 +37,9 @@ io.on('connection', (socket) => {
         callback()
     })
 
-    socket.on('sendLocation',(message)=>{
-        io.emit('message',`https://google.com/maps?q=${ message.latitude},${message.longitude}`)
+    socket.on('sendLocation',(coords,callback)=>{
+        io.emit('message',`https://google.com/maps?q=${ coords.latitude},${coords.longitude}`)
+        callback()
     })
     
     //socket.emit('countUpdated',count)
