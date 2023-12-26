@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        input{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    Chat App
+    <!-- setting up the scripts is simple -->
+
+    <!-- Web sockets are not specific to any programming language
+    - web sockets allow full duplex communication, in the http protocol if client requested 
+    the data then server can respond with the required data, but server can't send the data
+    to the client if client dosen't requests it
+    - allows persistant connection between client and server
+    - client -> server and server -> another clients -->
+
+    <!-- In index.js we  setup support for socket.io, -->
+    
+    <!-- <button id="increment">+1</button> -->
+
+    <form id="message-form">
+        <label>Data</label>
+        <input id="input_text">
+        <button id="input_id" type="submit">send</button>
+    </form>
+
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./js/chat.js"></script>
+</body>
+</html>
