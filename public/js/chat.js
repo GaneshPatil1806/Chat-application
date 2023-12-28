@@ -1,17 +1,31 @@
 const socket = io()
 
+//Elements
 const $messageForm = document.querySelector('#message-form')
 const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
-
 const $sendLocationButton = document.querySelector('#send-location')
+const $messages = document.querySelector('#messages')
 
-// socket.on('countUpdated',(count)=>{
-//     console.log('Count has been updated',count);
-// })
+//Templates
+const messageTemplate = document.querySelector('#message-template').innerHTML
+const locationTemplate = document.querySelector('#location-template').innerHTML
 
 socket.on('message',(message)=>{
-    console.log(message)
+    //console.log(message)
+    const html = Mustache.render(messageTemplate,{
+        message:message.text
+    })
+    $messages.insertAdjacentHTML('beforeend',html) 
+})
+
+socket.on('locationMessage',(url)=>{
+    //console.log(url)
+    //short hand syntax
+    const html = Mustache.render(locationTemplate,{
+        url
+    })
+    $messages.insertAdjacentHTML('beforeend',html) 
 })
 
 $messageForm.addEventListener('submit',(e)=>{
@@ -56,3 +70,7 @@ $sendLocationButton.addEventListener('click',()=>{
         })
     }) 
 })
+
+// socket.on('countUpdated',(count)=>{
+//     console.log('Count has been updated',count);
+// })
