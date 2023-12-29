@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <style>
+    <title>Chat App</title>
+    <link rel="icon" href="./chat-assets/img/favicon.png">
+    <link rel="stylesheet" href="./chat-assets/css/styles.min.css">
+    <!-- <style>
         input{
             margin: 10px;
         }
-    </style>
+    </style> -->
 </head>
 <body>
-    Chat App
 
+    <div class="chat">
+        <div class="chat__sidebar">
+
+        </div>
+    </div>
+    Chat App
     <div id="messages">
     </div>
     <!-- setting up the scripts is simple -->
@@ -38,13 +45,14 @@
 
     <script id="message-template" type="text/html">
         <div>
-            <p>{{message}}</p>
+            <p>{{createdAt}} - {{message}}</p>
         </div>
     </script>
 
-    <script id="location-template" type="text/html">
+    <script id="location-message-template" type="text/html">
         <div>
-            <p><a href="{{url}}" target="_blank">My current location</a></p>
+            <p>
+                {{createdAt}} - <a href="{{url}}" target="_blank">My current location</a></p>
         </div>
     </script>
 

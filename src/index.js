@@ -3,7 +3,7 @@ const http = require("http")
 const express = require("express")
 const socketio = require("socket.io")
 const Filter = require('bad-words')
-const {generateMessage} = require('./utils/messages')
+const {generateMessage,generateUrl} = require('./utils/messages')
 
 const app = express();
 // not necessury 
@@ -31,6 +31,7 @@ io.on('connection', (socket) => {
         const filter = new Filter()
 
         if(filter.isProfane(message)){
+            $messageFormButton.removeAttribute('disabled')
             return callback('Profanity is not allowed!')
         }
         
@@ -39,7 +40,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('sendLocation',(coords,callback)=>{
-        io.emit('locationMessage',`https://google.com/maps?q=${ coords.latitude},${coords.longitude}`)
+        io.emit('locationMessage',generateUrl(`https://google.com/maps?q=${ coords.latitude},${coords.longitude}`))
         callback()
     })
     
