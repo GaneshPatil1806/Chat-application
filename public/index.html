@@ -1,66 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat App</title>
     <link rel="icon" href="./chat-assets/img/favicon.png">
     <link rel="stylesheet" href="./chat-assets/css/styles.min.css">
-    <!-- <style>
-        input{
-            margin: 10px;
-        }
-    </style> -->
 </head>
-<body>
-
-    <div class="chat">
-        <div class="chat__sidebar">
-
+    <body>
+        <div class="centered-form">
+            <div class="centered-form__box">
+                <h1>Join</h1>
+                <form action="./chat.html">
+                    <label>Display Name</label>
+                    <input type="text" name="username" placeholder="Display Name" required>
+                    <label>Room</label>
+                    <input type="text" name="room" placeholder="Room" required>
+                    <button>Join</button>
+                </form>
+            </div>
         </div>
-    </div>
-    Chat App
-    <div id="messages">
-    </div>
-    <!-- setting up the scripts is simple -->
-
-    <!-- Web sockets are not specific to any programming language
-    - web sockets allow full duplex communication, in the http protocol if client requested 
-    the data then server can respond with the required data, but server can't send the data
-    to the client if client dosen't requests it
-    - allows persistant connection between client and server
-    - client -> server and server -> another clients -->
-
-    <!-- In index.js we  setup support for socket.io, -->
-    
-    <!-- <button id="increment">+1</button> -->
-
-    <form id="message-form">
-        <label>Data</label>
-        <input name="message_in">
-        <button id="input_id" type="submit">send</button>
-    </form>
-
-    <button id="send-location">Send-Location</button>
-
-    <script id="message-template" type="text/html">
-        <div>
-            <p>{{createdAt}} - {{message}}</p>
-        </div>
-    </script>
-
-    <script id="location-message-template" type="text/html">
-        <div>
-            <p>
-                {{createdAt}} - <a href="{{url}}" target="_blank">My current location</a></p>
-        </div>
-    </script>
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
-    <script src="./socket.io/socket.io.js"></script>
-    <script src="./js/chat.js"></script>
-</body>
+    </body>
 </html>

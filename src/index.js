@@ -20,12 +20,16 @@ app.use(express.static(publicDiretoryPath))
 io.on('connection', (socket) => {
 
     console.log("New websocket connection")
-    socket.emit('message',generateMessage('Welcome'))
-    socket.broadcast.emit('message',generateMessage('A new user has joined'));
 
-    // socket.on('sentall',(message)=>{
-    //     console.log(message);
-    // })
+    socket.on('join',({username,room})=>{
+        socket.join(room)
+
+        socket.emit('message',generateMessage('Welcome'))
+        socket.broadcast.to(room).emit('message',generateMessage(`${username} has joined `));
+
+        // socket.emit, io.emit, socket.broadcast.emit
+        // io.to.emit- emits event in the specific room, socket.broadcast.to.emit
+    })
 
     socket.on('sentall',(message,callback)=>{
         const filter = new Filter()
